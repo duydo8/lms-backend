@@ -2,25 +2,27 @@ package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsLessons;
 import com.duydv.lms.repositories.LmsLessonRepository;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 @Log4j2
 @Service
 @RequiredArgsConstructor
 public class LmsLessonServiceImpl implements LmsLessonService {
 
-  private final LmsLessonRepository lmsLessonRepository;
+  private LmsLessonRepository lmsLessonRepository;
 
   @Override
-  public List<LmsLessons> findAll() {
-    return lmsLessonRepository.findAll();
+  public Page<LmsLessons> findAllPageable(Pageable pageable) {
+    return lmsLessonRepository.findAll(pageable);
+  }
+
+  @Override
+  public LmsLessons save(LmsLessons lessons) {
+    return lmsLessonRepository.save(lessons);
   }
 
   @Override
@@ -29,18 +31,7 @@ public class LmsLessonServiceImpl implements LmsLessonService {
   }
 
   @Override
-  public List<LmsLessons> findByStageIdIn(Set<Integer> stageIds) {
-    if (CollectionUtils.isEmpty(stageIds)) {
-      return Collections.emptyList();
-    }
-    return lmsLessonRepository.findByStageIdIn(stageIds);
-  }
-
-  @Override
-  public List<LmsLessons> findByIds(Collection<Integer> ids) {
-    if (CollectionUtils.isEmpty(ids)) {
-      return Collections.emptyList();
-    }
-    return lmsLessonRepository.findByIdIn(ids);
+  public void deleteById(Integer id) {
+    lmsLessonRepository.deleteById(id);
   }
 }

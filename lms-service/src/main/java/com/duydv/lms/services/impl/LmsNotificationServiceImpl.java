@@ -19,4 +19,19 @@ public class LmsNotificationServiceImpl implements LmsNotificationService {
   public Page<LmsNotification> findAllPageable(Pageable pageable) {
     return lmsNotificationRepository.findAll(pageable);
   }
+
+  @Override
+  public LmsNotification save(LmsNotification notification) {
+    return lmsNotificationRepository.save(notification);
+  }
+
+  @Override
+  public LmsNotification findById(Integer id) {
+    return lmsNotificationRepository.findById(id).orElse(null);
+  }
+
+  @Override
+  public void deleteById(Integer id) {
+    lmsNotificationRepository.deleteById(id);
+  }
 }
