@@ -8,7 +8,7 @@ public interface LmsLessonService {
 
   Page<LmsLessons> findAllPageable(Pageable pageable);
 
-  LmsLessons save(LmsLessons Lessoons);
+  LmsLessons save(LmsLessons lessons);
 
   LmsLessons findById(Integer id);
 

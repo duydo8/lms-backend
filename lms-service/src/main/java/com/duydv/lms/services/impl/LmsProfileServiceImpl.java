@@ -21,8 +21,8 @@ public class LmsProfileServiceImpl implements LmsProfileService {
   }
 
   @Override
-  public LmsProfile save(LmsProfile Profile) {
-    return lmsProfileRepository.save(Profile);
+  public LmsProfile save(LmsProfile lmsProfile) {
+    return lmsProfileRepository.save(lmsProfile);
   }
 
   @Override

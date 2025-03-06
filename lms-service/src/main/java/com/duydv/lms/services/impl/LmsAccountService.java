@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface LmsAccountService {
 
   Page<LmsAccount> findAllPageable(Pageable pageable);
-  LmsAccount save(LmsAccount Account);
+  LmsAccount save(LmsAccount account);
   LmsAccount findById(Integer id);
   void deleteById(Integer id);
 }

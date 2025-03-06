@@ -22,7 +22,7 @@ public class LmsScheduleSlotsServicesImpl implements LmsScheduleSlotsService {
   }
 
   @Override
-  public LmsScheduleSlots save(LmsScheduleSlots Schedule) {
-    return lmsScheduleSlotsRepository.save(Schedule);
+  public LmsScheduleSlots save(LmsScheduleSlots lmsScheduleSlots) {
+    return lmsScheduleSlotsRepository.save(lmsScheduleSlots);
   }
 }

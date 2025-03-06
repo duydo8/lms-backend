@@ -10,10 +10,14 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
+
 public class LmsSchoolsServiceImpl implements LmsSchoolsService {
 
   private LmsSchoolsRepository lmsSchoolsRepository;
+
+  public LmsSchoolsServiceImpl(LmsSchoolsRepository lmsSchoolsRepository) {
+    this.lmsSchoolsRepository = lmsSchoolsRepository;
+  }
 
   @Override
   public Page<LmsSchools> findAllPageable(Pageable pageable) {
@@ -21,8 +25,8 @@ public class LmsSchoolsServiceImpl implements LmsSchoolsService {
   }
 
   @Override
-  public LmsSchools save(LmsSchools Schools) {
-    return lmsSchoolsRepository.save(Schools);
+  public LmsSchools save(LmsSchools lmsSchools) {
+    return lmsSchoolsRepository.save(lmsSchools);
   }
 
   @Override

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 public interface LmsCourseService {
 
   Page<LmsCourses> findAllPageable(Pageable pageable);
-  LmsCourses save(LmsCourses Course);
+  LmsCourses save(LmsCourses courses);
   LmsCourses findById(Integer id);
   void deleteById(Integer id);
 }

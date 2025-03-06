@@ -8,5 +8,5 @@ public interface LmsScheduleSlotsService {
 
   Page<LmsScheduleSlots> findAllPageable(Pageable pageable);
 
-  LmsScheduleSlots save(LmsScheduleSlots ScheduleSlots);
+  LmsScheduleSlots save(LmsScheduleSlots lmsScheduleSlots);
 }

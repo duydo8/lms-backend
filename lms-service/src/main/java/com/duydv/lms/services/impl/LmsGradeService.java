@@ -8,7 +8,7 @@ public interface LmsGradeService {
 
   Page<LmsGrades> findAllPageable(Pageable pageable);
 
-  LmsGrades save(LmsGrades Grades);
+  LmsGrades save(LmsGrades grades);
 
   LmsGrades findById(Integer id);
 

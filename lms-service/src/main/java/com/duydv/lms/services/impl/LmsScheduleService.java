@@ -8,7 +8,7 @@ public interface LmsScheduleService {
 
   Page<LmsSchedules> findAllPageable(Pageable pageable);
 
-  LmsSchedules save(LmsSchedules Schedules);
+  LmsSchedules save(LmsSchedules lmsSchedules);
 
   LmsSchedules findById(Integer id);
 

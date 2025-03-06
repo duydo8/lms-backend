@@ -8,7 +8,7 @@ public interface LmsFilesService {
 
   Page<LmsFiles> findAllPageable(Pageable pageable);
 
-  LmsFiles save(LmsFiles Files);
+  LmsFiles save(LmsFiles files);
 
   LmsFiles findById(Integer id);
 

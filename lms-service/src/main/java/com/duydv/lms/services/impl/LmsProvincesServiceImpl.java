@@ -21,8 +21,8 @@ public class LmsProvincesServiceImpl implements LmsProvincesService {
   }
 
   @Override
-  public LmsProvinces save(LmsProvinces Provinces) {
-    return lmsProvincesRepository.save(Provinces);
+  public LmsProvinces save(LmsProvinces lmsProvinces) {
+    return lmsProvincesRepository.save(lmsProvinces);
   }
 
   @Override

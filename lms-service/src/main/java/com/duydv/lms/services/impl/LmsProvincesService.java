@@ -8,7 +8,7 @@ public interface LmsProvincesService {
 
   Page<LmsProvinces> findAllPageable(Pageable pageable);
 
-  LmsProvinces save(LmsProvinces Provinces);
+  LmsProvinces save(LmsProvinces provinces);
 
   LmsProvinces findById(Integer id);
 

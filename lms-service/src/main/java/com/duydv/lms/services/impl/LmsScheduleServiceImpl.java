@@ -21,8 +21,8 @@ public class LmsScheduleServiceImpl implements LmsScheduleService {
   }
 
   @Override
-  public LmsSchedules save(LmsSchedules Schedule) {
-    return lmsScheduleRepository.save(Schedule);
+  public LmsSchedules save(LmsSchedules lmsSchedules) {
+    return lmsScheduleRepository.save(lmsSchedules);
   }
 
   @Override

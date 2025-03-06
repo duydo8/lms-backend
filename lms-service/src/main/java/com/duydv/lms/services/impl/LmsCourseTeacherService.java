@@ -8,7 +8,7 @@ public interface LmsCourseTeacherService {
 
   Page<LmsCourseTeacher> findAllPageable(Pageable pageable);
 
-  LmsCourseTeacher save(LmsCourseTeacher CourseTeacher);
+  LmsCourseTeacher save(LmsCourseTeacher courseTeacher);
 
   LmsCourseTeacher findById(Integer id);
 

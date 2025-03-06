@@ -22,8 +22,8 @@ public class LmsTimeSlotsServiceImpl implements LmsTimeSlotsService {
   }
 
   @Override
-  public LmsTimeSlots save(LmsTimeSlots TimeSlots) {
-    return lmsTimeSlotsRepository.save(TimeSlots);
+  public LmsTimeSlots save(LmsTimeSlots lmsTimeSlots) {
+    return lmsTimeSlotsRepository.save(lmsTimeSlots);
   }
 
   @Override

@@ -8,7 +8,7 @@ public interface LmsTimeSlotsService {
 
   Page<LmsTimeSlots> findAllPageable(Pageable pageable);
 
-  LmsTimeSlots save(LmsTimeSlots TimeSlots);
+  LmsTimeSlots save(LmsTimeSlots lmsTimeSlots);
 
   LmsTimeSlots findById(Integer id);
 

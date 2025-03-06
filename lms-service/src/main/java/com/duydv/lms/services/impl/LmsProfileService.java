@@ -8,7 +8,7 @@ public interface LmsProfileService {
 
   Page<LmsProfile> findAllPageable(Pageable pageable);
 
-  LmsProfile save(LmsProfile Profile);
+  LmsProfile save(LmsProfile p);
 
   LmsProfile findById(Integer id);
 
