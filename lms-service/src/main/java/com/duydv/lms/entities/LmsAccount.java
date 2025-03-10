@@ -58,9 +58,13 @@ public class LmsAccount {
   @Column(name = "status")
   private Integer status;
 
+  @NotNull
+  @Column(name = "role_id")
+  private Integer roleId;
+
   @CreatedDate
   @Column(name = "created_at")
-  private Date createdAt;
+  private Date createdAt = new Date();
 
   @LastModifiedDate
   @Column(name = "updated_at")

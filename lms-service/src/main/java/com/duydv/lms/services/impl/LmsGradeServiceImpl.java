@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsGradeServiceImpl implements LmsGradeService {
 
-  private LmsGradeRepository lmsGradesRepository;
+  private final LmsGradeRepository lmsGradesRepository;
 
   @Override
   public Page<LmsGrades> findAllPageable(Pageable pageable) {

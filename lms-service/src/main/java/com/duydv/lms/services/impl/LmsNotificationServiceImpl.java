@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsNotificationServiceImpl implements LmsNotificationService {
 
-  private LmsNotificationRepository lmsNotificationRepository;
+  private final LmsNotificationRepository lmsNotificationRepository;
 
   @Override
   public Page<LmsNotification> findAllPageable(Pageable pageable) {

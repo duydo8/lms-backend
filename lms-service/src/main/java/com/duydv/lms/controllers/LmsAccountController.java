@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LmsAccountController {
 
   private final LmsAccountService lmsAccountService;
+  private final PasswordEncoder passwordEncoder;
 
   @GetMapping("/findAll")
   public ResponseEntity<BaseResponse> findAll(
@@ -50,6 +52,15 @@ public class LmsAccountController {
 
   @PostMapping("/save")
   public ResponseEntity<BaseResponse> save(@RequestBody @Valid LmsAccount lmsAccount) {
+    if (lmsAccount.getPhone() == null) {
+      return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_INVALID_PARAMS));
+    }
+    LmsAccount account = lmsAccountService.findByPhone(lmsAccount.getPhone());
+    if (account != null) {
+      return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_ALREADY_EXISTS));
+    }
+    lmsAccount.setPassword(passwordEncoder.encode(lmsAccount.getPassword()));
+
     return ResponseEntity.ok(new BaseResponse(
         lmsAccountService.save(lmsAccount), 200, MessageConstant.MESSAGE_SAVE_SUCCESS)
     );
@@ -61,7 +72,7 @@ public class LmsAccountController {
     if (lmsAccount != null) {
       return ResponseEntity.ok(new BaseResponse(lmsAccount, 200, MessageConstant.MESSAGE_FOUND));
     }
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 
   @DeleteMapping("/deleteById")
@@ -72,6 +83,6 @@ public class LmsAccountController {
       return ResponseEntity.ok(
           new BaseResponse(lmsAccount.getId(), 200, MessageConstant.MESSAGE_DELETE_SUCCESS));
     }
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 }

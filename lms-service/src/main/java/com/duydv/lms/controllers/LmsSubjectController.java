@@ -37,7 +37,7 @@ public class LmsSubjectController {
     LmsSubject currentSubject = lmsSubjectService.findByName(lmsSubject.getName());
     if (currentSubject != null || lmsSubject.getName().isEmpty()) {
       return ResponseEntity.ok()
-          .body(new BaseResponse(400, MessageConstant.MESSAGE_ALREADY_EXISTS_ERROR));
+          .body(new BaseResponse(400, MessageConstant.MESSAGE_ALREADY_EXISTS));
     }
 
     return ResponseEntity.ok(new BaseResponse(
@@ -55,7 +55,7 @@ public class LmsSubjectController {
     LmsSubject currentSubject = lmsSubjectService.findByName(lmsSubject.getName());
     if (currentSubject != null) {
       return ResponseEntity.ok()
-          .body(new BaseResponse(400, MessageConstant.MESSAGE_ALREADY_EXISTS_ERROR));
+          .body(new BaseResponse(400, MessageConstant.MESSAGE_ALREADY_EXISTS));
     }
 
     lmsSubject = lmsSubjectService.update(lmsSubject);
@@ -70,7 +70,7 @@ public class LmsSubjectController {
       return ResponseEntity.ok(new BaseResponse(subject, 200, MessageConstant.MESSAGE_FOUND));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 
   @GetMapping("/findByName")
@@ -80,7 +80,7 @@ public class LmsSubjectController {
       return ResponseEntity.ok(new BaseResponse(subject, 200, MessageConstant.MESSAGE_FOUND));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 
   @DeleteMapping("/deleteById")
@@ -92,6 +92,6 @@ public class LmsSubjectController {
           new BaseResponse(subject.getId(), 200, MessageConstant.MESSAGE_DELETE_SUCCESS));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 }

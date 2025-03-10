@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsAccountServiceImpl implements LmsAccountService {
 
-  private LmsAccountRepository lmsAccountRepository;
+  private final LmsAccountRepository lmsAccountRepository;
 
   @Override
   public Page<LmsAccount> findAllPageable(Pageable pageable) {
-    return lmsAccountRepository.findAll(pageable);
+    return lmsAccountRepository.findAllIsActive(pageable);
   }
 
   @Override
@@ -27,11 +27,21 @@ public class LmsAccountServiceImpl implements LmsAccountService {
 
   @Override
   public LmsAccount findById(Integer id) {
-    return lmsAccountRepository.findById(id).orElse(null);
+    return lmsAccountRepository.findByIdAndIsActive(id);
   }
 
   @Override
   public void deleteById(Integer id) {
     lmsAccountRepository.deleteById(id);
+  }
+
+  @Override
+  public LmsAccount findByPhone(String phone){
+    return lmsAccountRepository.findByPhone(phone);
+  }
+
+  @Override
+  public LmsAccount findByPhoneAndPassword(String phone, String password){
+    return lmsAccountRepository.findByPhoneAndPassword(phone, password);
   }
 }

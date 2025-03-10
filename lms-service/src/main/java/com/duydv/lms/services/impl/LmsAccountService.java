@@ -10,4 +10,8 @@ public interface LmsAccountService {
   LmsAccount save(LmsAccount account);
   LmsAccount findById(Integer id);
   void deleteById(Integer id);
+
+  LmsAccount findByPhone(String phone);
+
+  LmsAccount findByPhoneAndPassword(String phone, String password);
 }

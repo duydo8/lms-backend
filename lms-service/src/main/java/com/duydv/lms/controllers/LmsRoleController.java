@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,7 +63,20 @@ public class LmsRoleController {
       return ResponseEntity.ok(new BaseResponse(lmsRoles, 200, MessageConstant.MESSAGE_FOUND));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
+  }
+
+  @PutMapping("/update")
+  public ResponseEntity<BaseResponse> update(@RequestBody LmsRoles lmsRoles) {
+    LmsRoles roles = lmsRoleService.findById(lmsRoles.getId());
+    if (roles == null) {
+      return ResponseEntity.ok().body(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
+    }
+
+    roles.setName(lmsRoles.getName());
+    return ResponseEntity.ok(
+        new BaseResponse(lmsRoleService.save(roles), 200, MessageConstant.MESSAGE_SAVE_SUCCESS)
+    );
   }
 
   @DeleteMapping("/deleteById")
@@ -74,6 +88,6 @@ public class LmsRoleController {
           new BaseResponse(lmsRoles.getId(), 200, MessageConstant.MESSAGE_DELETE_SUCCESS));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 }

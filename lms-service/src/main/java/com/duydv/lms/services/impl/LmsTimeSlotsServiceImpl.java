@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class LmsTimeSlotsServiceImpl implements LmsTimeSlotsService {
 
-  private LmsTimeSlotsRepository lmsTimeSlotsRepository;
+  private final LmsTimeSlotsRepository lmsTimeSlotsRepository;
 
   @Override
   public Page<LmsTimeSlots> findAllPageable(Pageable pageable) {

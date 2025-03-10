@@ -37,13 +37,8 @@ public class LmsRoles implements Serializable {
   @Column(name = "name")
   private String name;
 
-  @NotNull
-  @Size(min = 1, max = 255)
-  @Column(name = "guard_name")
-  private String guardName;
-
   @Column(name = "created_at")
-  private Date createdAt;
+  private Date createdAt = new Date();
 
   @Column(name = "updated_at")
   private Date updatedAt;

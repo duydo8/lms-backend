@@ -62,7 +62,7 @@ public class LmsSchoolController {
       return ResponseEntity.ok(new BaseResponse(lmsSchools, 200, MessageConstant.MESSAGE_FOUND));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 
   @DeleteMapping("/deleteById")
@@ -74,6 +74,6 @@ public class LmsSchoolController {
           new BaseResponse(lmsSchools.getId(), 200, MessageConstant.MESSAGE_DELETE_SUCCESS));
     }
 
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 }

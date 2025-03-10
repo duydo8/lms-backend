@@ -61,7 +61,7 @@ public class LmsLessonController {
     if (lmsLessons != null) {
       return ResponseEntity.ok(new BaseResponse(lmsLessons, 200, MessageConstant.MESSAGE_FOUND));
     }
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 
   @DeleteMapping("/deleteById")
@@ -72,6 +72,6 @@ public class LmsLessonController {
       return ResponseEntity.ok(
           new BaseResponse(lmsLessons.getId(), 200, MessageConstant.MESSAGE_DELETE_SUCCESS));
     }
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 }

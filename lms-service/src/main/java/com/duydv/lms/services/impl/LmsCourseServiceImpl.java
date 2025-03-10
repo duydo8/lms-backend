@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsCourseServiceImpl implements LmsCourseService {
 
-  private LmsCourseRepository lmsCoursesRepository;
+  private final LmsCourseRepository lmsCoursesRepository;
 
   @Override
   public Page<LmsCourses> findAllPageable(Pageable pageable) {

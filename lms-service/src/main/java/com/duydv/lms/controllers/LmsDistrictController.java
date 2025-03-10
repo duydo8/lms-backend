@@ -61,7 +61,7 @@ public class LmsDistrictController {
     if (lmsDistricts != null) {
       return ResponseEntity.ok(new BaseResponse(lmsDistricts, 200, MessageConstant.MESSAGE_FOUND));
     }
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 
   @DeleteMapping("/deleteById")
@@ -72,6 +72,6 @@ public class LmsDistrictController {
       return ResponseEntity.ok(
           new BaseResponse(lmsDistricts.getId(), 200, MessageConstant.MESSAGE_DELETE_SUCCESS));
     }
-    return ResponseEntity.ok(new BaseResponse(404, MessageConstant.MESSAGE_NOT_FOUND));
+    return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
   }
 }

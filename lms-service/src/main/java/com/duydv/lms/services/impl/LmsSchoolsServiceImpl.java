@@ -10,14 +10,10 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-
+@RequiredArgsConstructor
 public class LmsSchoolsServiceImpl implements LmsSchoolsService {
 
-  private LmsSchoolsRepository lmsSchoolsRepository;
-
-  public LmsSchoolsServiceImpl(LmsSchoolsRepository lmsSchoolsRepository) {
-    this.lmsSchoolsRepository = lmsSchoolsRepository;
-  }
+  private final LmsSchoolsRepository lmsSchoolsRepository;
 
   @Override
   public Page<LmsSchools> findAllPageable(Pageable pageable) {

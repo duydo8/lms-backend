@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsDistrictsServiceImpl implements LmsDistrictsService {
 
-  private LmsDistrictsRepository lmsDistrictssRepository;
+  private final LmsDistrictsRepository lmsDistrictssRepository;
 
   @Override
   public Page<LmsDistricts> findAllPageable(Pageable pageable) {

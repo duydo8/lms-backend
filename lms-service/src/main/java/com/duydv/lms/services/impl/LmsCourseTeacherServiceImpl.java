@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsCourseTeacherServiceImpl implements LmsCourseTeacherService {
 
-  private LmsCourseTeacherRepository lmsCourseTeachersRepository;
+  private final LmsCourseTeacherRepository lmsCourseTeachersRepository;
 
   @Override
   public Page<LmsCourseTeacher> findAllPageable(Pageable pageable) {
