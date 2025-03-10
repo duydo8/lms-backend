@@ -1,6 +1,17 @@
+server:
+  port: 8090
+
 spring:
   application:
     name: lms-service
 
-  config:
-    import: optional:configserver:http://localhost:8888
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    username: root
+    password: Chaocaunhe1@
+    url: jdbc:mysql://localhost:3306/lms
+    driver-class-name: com.mysql.cj.jdbc.Driver
