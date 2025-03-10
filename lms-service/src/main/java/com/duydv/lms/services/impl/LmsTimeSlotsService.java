@@ -1,20 +1,17 @@
 package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsTimeSlots;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface LmsTimeSlotsService {
 
-  List<LmsTimeSlots> findAll();
+  Page<LmsTimeSlots> findAllPageable(Pageable pageable);
 
-  LmsTimeSlots findById(int id);
+  LmsTimeSlots save(LmsTimeSlots lmsTimeSlots);
 
-  List<LmsTimeSlots> findByIdIn(List<Integer> ids);
+  LmsTimeSlots findById(Integer id);
 
-  List<LmsTimeSlots> findByScheduleIdIn(List<Integer> scheduleIds);
-
-  LmsTimeSlots findByDayAndTime(int dayOfWeek, String startTime, String endTime);
-
-  LmsTimeSlots save(LmsTimeSlots LmsTimeSlots);
+  void deleteById(Integer id);
 
 }

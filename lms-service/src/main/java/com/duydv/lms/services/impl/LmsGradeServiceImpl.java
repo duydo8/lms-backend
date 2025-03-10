@@ -3,11 +3,10 @@ package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsGrades;
 import com.duydv.lms.repositories.LmsGradeRepository;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Log4j2
@@ -15,35 +14,25 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LmsGradeServiceImpl implements LmsGradeService {
 
-  private final LmsGradeRepository lmsGradeRepository;
+  private final LmsGradeRepository lmsGradesRepository;
 
   @Override
-  public List<LmsGrades> findAll() {
-    return lmsGradeRepository.findAll();
+  public Page<LmsGrades> findAllPageable(Pageable pageable) {
+    return lmsGradesRepository.findAll(pageable);
   }
 
   @Override
-  public LmsGrades findById(int id) {
-    return lmsGradeRepository.findById(id).orElse(null);
+  public LmsGrades save(LmsGrades grades) {
+    return lmsGradesRepository.save(grades);
   }
 
   @Override
-  public Integer findLevelByGradeId(int gradeId) {
-    return lmsGradeRepository.findLevelByGradeId(gradeId);
+  public LmsGrades findById(Integer id) {
+    return lmsGradesRepository.findById(id).orElse(null);
   }
 
   @Override
-  public LmsGrades findByLevel(Integer level) {
-    return lmsGradeRepository.findByLevel(level);
-  }
-
-  @Override
-  public LmsGrades findByScheduleId(Integer LmsScheduleId) {
-    return lmsGradeRepository.findByScheduleId(LmsScheduleId);
-  }
-
-  @Override
-  public Map<Integer, LmsGrades> findAllMap() {
-    return findAll().stream().collect(Collectors.toMap(LmsGrades::getId, x -> x));
+  public void deleteById(Integer id) {
+    lmsGradesRepository.deleteById(id);
   }
 }

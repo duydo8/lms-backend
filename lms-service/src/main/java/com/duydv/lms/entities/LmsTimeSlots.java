@@ -35,7 +35,7 @@ public class LmsTimeSlots implements Serializable {
   private String endTime;
 
   @Column(name = "created_at")
-  private Date createdAt;
+  private Date createdAt = new Date();
 
   @Column(name = "updated_at")
   private Date updatedAt;

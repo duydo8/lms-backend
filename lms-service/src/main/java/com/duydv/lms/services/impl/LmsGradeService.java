@@ -1,20 +1,16 @@
 package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsGrades;
-import java.util.List;
-import java.util.Map;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface LmsGradeService {
 
-  List<LmsGrades> findAll();
+  Page<LmsGrades> findAllPageable(Pageable pageable);
 
-  LmsGrades findById(int parseInt);
+  LmsGrades save(LmsGrades grades);
 
-  Integer findLevelByGradeId(int gradeId);
+  LmsGrades findById(Integer id);
 
-  LmsGrades findByLevel(Integer level);
-
-  LmsGrades findByScheduleId(Integer LmsScheduleId);
-
-  Map<Integer, LmsGrades> findAllMap();
+  void deleteById(Integer id);
 }

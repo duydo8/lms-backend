@@ -2,34 +2,36 @@ package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsDistricts;
 import com.duydv.lms.repositories.LmsDistrictsRepository;
-import java.util.List;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class LmsDistrictsServiceImpl implements LmsDistrictsService {
 
-  private final LmsDistrictsRepository lmsDistrictsRepository;
+  private final LmsDistrictsRepository lmsDistrictssRepository;
 
-  public LmsDistrictsServiceImpl(
-      LmsDistrictsRepository lmsDistrictsRepository
-  ) {
-    this.lmsDistrictsRepository = lmsDistrictsRepository;
+  @Override
+  public Page<LmsDistricts> findAllPageable(Pageable pageable) {
+    return lmsDistrictssRepository.findAll(pageable);
   }
 
   @Override
-  public List<LmsDistricts> findByProvinceCode(String provinceCode) {
-    return lmsDistrictsRepository.findByProvinceCode(provinceCode);
+  public LmsDistricts save(LmsDistricts districts) {
+    return lmsDistrictssRepository.save(districts);
   }
 
   @Override
-  public LmsDistricts findBySlug(String slug) {
-    return lmsDistrictsRepository.findBySlug(slug);
+  public LmsDistricts findById(Integer id) {
+    return lmsDistrictssRepository.findById(id).orElse(null);
   }
 
   @Override
-  public LmsDistricts findById(int i) {
-    return lmsDistrictsRepository.findById(i).orElse(null);
+  public void deleteById(Integer id) {
+    lmsDistrictssRepository.deleteById(id);
   }
 }

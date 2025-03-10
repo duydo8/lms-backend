@@ -6,8 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LmsProvincesRepository extends JpaRepository<LmsProvinces, Integer> {
-
-  LmsProvinces findByCode(String code);
-
-  LmsProvinces findBySlug(String slug);
 }

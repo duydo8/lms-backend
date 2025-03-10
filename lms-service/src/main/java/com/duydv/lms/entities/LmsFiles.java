@@ -65,7 +65,7 @@ public class LmsFiles implements Serializable {
   private Date deletedAt;
 
   @Column(name = "created_at")
-  private Date createdAt;
+  private Date createdAt = new Date();
 
   @Column(name = "updated_at")
   private Date updatedAt;

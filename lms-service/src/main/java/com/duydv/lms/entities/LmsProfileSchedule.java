@@ -19,5 +19,5 @@ public class LmsProfileSchedule {
   @Id
   private Integer scheduleId;
   @CreatedDate
-  private Date createdAt;
+  private Date createdAt = new Date();
 }

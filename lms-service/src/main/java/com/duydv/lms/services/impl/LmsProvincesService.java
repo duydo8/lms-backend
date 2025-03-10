@@ -1,12 +1,16 @@
 package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsProvinces;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface LmsProvincesService {
 
-  LmsProvinces findBySlug(String slug);
+  Page<LmsProvinces> findAllPageable(Pageable pageable);
 
-  LmsProvinces findByCode(String code);
+  LmsProvinces save(LmsProvinces provinces);
 
-  LmsProvinces findById(int i);
+  LmsProvinces findById(Integer id);
+
+  void deleteById(Integer id);
 }

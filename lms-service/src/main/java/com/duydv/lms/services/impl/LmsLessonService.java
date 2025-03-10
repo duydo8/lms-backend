@@ -1,17 +1,16 @@
 package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsLessons;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface LmsLessonService {
 
-  List<LmsLessons> findAll();
+  Page<LmsLessons> findAllPageable(Pageable pageable);
+
+  LmsLessons save(LmsLessons lessons);
 
   LmsLessons findById(Integer id);
 
-  List<LmsLessons> findByStageIdIn(Set<Integer> stageIds);
-
-  List<LmsLessons> findByIds(Collection<Integer> ids);
+  void deleteById(Integer id);
 }

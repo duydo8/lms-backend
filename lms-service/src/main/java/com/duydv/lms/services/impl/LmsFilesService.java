@@ -1,14 +1,17 @@
 package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsFiles;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface LmsFilesService {
 
-  List<LmsFiles> findAll();
+  Page<LmsFiles> findAllPageable(Pageable pageable);
 
-  List<LmsFiles> findByIds(List<Integer> ids);
+  LmsFiles save(LmsFiles files);
 
+  LmsFiles findById(Integer id);
 
+  void deleteById(Integer id);
 
 }

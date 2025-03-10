@@ -1,13 +1,16 @@
 package com.duydv.lms.services.impl;
 
 import com.duydv.lms.entities.LmsSchools;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface LmsSchoolsService {
 
-  List<LmsSchools> findByDistrictCode(Integer code);
+  Page<LmsSchools> findAllPageable(Pageable pageable);
 
-  List<LmsSchools> findByDistrictId(Integer distId);
+  LmsSchools save(LmsSchools lmsSchools);
 
-  LmsSchools findById(int i);
+  LmsSchools findById(Integer id);
+
+  void deleteById(Integer id);
 }
