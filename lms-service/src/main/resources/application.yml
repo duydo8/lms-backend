@@ -15,4 +15,4 @@ spring:
     username: root
     password: Chaocaunhe1@
     url: jdbc:mysql://localhost:3306/lms
-    database-platform: org.hibernate.dialect.MySQLDialect
+    driver-class-name: com.mysql.cj.jdbc.Driver
