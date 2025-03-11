@@ -19,5 +19,7 @@ RUN ls -la
 # Build ứng dụng bằng Maven
 RUN mvn clean package -DskipTests
 
+EXPOSE 5000
+
 # Chạy ứng dụng với JAR vừa build
 CMD ["java", "-jar", "target/lms-service-0.0.1-SNAPSHOT.jar"]
