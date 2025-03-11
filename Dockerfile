@@ -1,16 +1,19 @@
 # Sử dụng OpenJDK 17 làm base image
 FROM openjdk:17-jdk-slim
 
-# Cài đặt Maven để build source code trực tiếp trong container
+# Cài đặt Maven để build trực tiếp trong container
 RUN apt-get update && apt-get install -y maven
 
 # Thiết lập thư mục làm việc
 WORKDIR /app
 
 # Copy toàn bộ mã nguồn vào container
-COPY . .
+COPY . /app
 
-# Build ứng dụng bằng Maven (không cần build trước trên máy)
+# Chuyển vào thư mục chứa project thực sự
+WORKDIR /app/lms-service
+
+# Build ứng dụng bằng Maven
 RUN mvn clean package -DskipTests
 
 # Chạy ứng dụng với JAR vừa build
