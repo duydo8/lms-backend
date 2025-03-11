@@ -14,5 +14,5 @@ spring:
   datasource:
     username: udfx8gd2r28omxh0
     password: cac3FVA7OEoWRsQdkULi
-    url: jdbc:mysql://udfx8gd2r28omxh0:cac3FVA7OEoWRsQdkULi@b2rdypb6kbojeaqiz6ab-mysql.services.clever-cloud.com:3306/b2rdypb6kbojeaqiz6ab
+    url: jdbc:mysql://b2rdypb6kbojeaqiz6ab-mysql.services.clever-cloud.com:3306/b2rdypb6kbojeaqiz6ab
     driver-class-name: com.mysql.cj.jdbc.Driver
