@@ -22,10 +22,10 @@ public class LmsAccountServiceImpl implements LmsAccountService {
     Pageable pageable = PageRequest.of(accountFindAllRequest.getPage(),
         accountFindAllRequest.getSize());
     if (!accountFindAllRequest.getFullName().isEmpty()) {
-      return lmsAccountRepository.findAllIsActiveByFullName(accountFindAllRequest.getFullName(),
+      return lmsAccountRepository.findAllByFullName(accountFindAllRequest.getFullName(),
           pageable);
     }
-    return lmsAccountRepository.findAllIsActive(pageable);
+    return lmsAccountRepository.findAll(pageable);
   }
 
   @Override
@@ -35,7 +35,7 @@ public class LmsAccountServiceImpl implements LmsAccountService {
 
   @Override
   public LmsAccount findById(Integer id) {
-    return lmsAccountRepository.findByIdAndIsActive(id);
+    return lmsAccountRepository.findById(id).orElse(null);
   }
 
   @Override

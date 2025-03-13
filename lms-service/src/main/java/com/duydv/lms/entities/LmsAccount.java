@@ -62,6 +62,9 @@ public class LmsAccount {
   @Column(name = "role_id")
   private Integer roleId;
 
+  @Column(name = "avatar_url")
+  private String avatarUrl;
+
   @CreatedDate
   @Column(name = "created_at")
   private Date createdAt = new Date();

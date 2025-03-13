@@ -17,6 +17,8 @@ public interface LmsAccountRepository extends JpaRepository<LmsAccount, Integer>
   @Query("SELECT a FROM LmsAccount a WHERE a.status = 1 and a.fullName LIKE CONCAT('%', :fullName, '%')")
   Page<LmsAccount> findAllIsActiveByFullName(@Param("fullName") String fullName, Pageable pageable);
 
+  Page<LmsAccount> findAllByFullName(String fullName, Pageable pageable);
+
   @Query("select a from LmsAccount a where a.status = 1 and a.phone = ?1")
   LmsAccount findByPhone(String phone);
 

@@ -5,6 +5,8 @@ import com.duydv.lms.dtos.request.AccountFindAllRequest;
 import com.duydv.lms.dtos.response.BaseResponse;
 import com.duydv.lms.entities.LmsAccount;
 import com.duydv.lms.services.impl.LmsAccountService;
+import java.util.Date;
+import java.util.Objects;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +59,33 @@ public class LmsAccountController {
 
     return ResponseEntity.ok(new BaseResponse(
         lmsAccountService.save(lmsAccount), 200, MessageConstant.MESSAGE_SAVE_SUCCESS)
+    );
+  }
+
+  @PostMapping("/update")
+  public ResponseEntity<BaseResponse> update(@RequestBody @Valid LmsAccount lmsAccount) {
+    LmsAccount account = lmsAccountService.findById(lmsAccount.getId());
+    if (account == null) {
+      return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_NOT_FOUND));
+    }
+    LmsAccount accountServiceByPhone = lmsAccountService.findByPhone(lmsAccount.getPhone());
+    if (accountServiceByPhone != null && !Objects.equals(accountServiceByPhone.getId(),
+        lmsAccount.getId())) {
+      return ResponseEntity.ok(new BaseResponse(400, MessageConstant.MESSAGE_ALREADY_EXISTS));
+    }
+
+    // set data
+    account.setFullName(lmsAccount.getFullName());
+    account.setPhone(lmsAccount.getPhone());
+    account.setAddress(lmsAccount.getAddress());
+    account.setEmail(lmsAccount.getEmail());
+    account.setGender(lmsAccount.getGender());
+    account.setStatus(lmsAccount.getStatus());
+    account.setAvatarUrl(lmsAccount.getAvatarUrl());
+    account.setUpdatedAt(new Date());
+
+    return ResponseEntity.ok(new BaseResponse(
+        lmsAccountService.save(account), 200, MessageConstant.MESSAGE_SAVE_SUCCESS)
     );
   }
 

@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8000}
+  port: 8000
 
 spring:
   application:
@@ -12,7 +12,11 @@ spring:
     database-platform: org.hibernate.dialect.MySQLDialect
 
   datasource:
-    username: udfx8gd2r28omxh0
-    password: cac3FVA7OEoWRsQdkULi
-    url: jdbc:mysql://b2rdypb6kbojeaqiz6ab-mysql.services.clever-cloud.com:3306/b2rdypb6kbojeaqiz6ab
+    username: root
+    password: FUPisHYNaaskpTHxPkKTBRYlCPOjPqjs
+    url: jdbc:mysql://tramway.proxy.rlwy.net:49555/lms
     driver-class-name: com.mysql.cj.jdbc.Driver
+cloudinary:
+  cloud-name: demxhfvfs
+  api-key: 482747477385664
+  api-secret: iaiotSS140T9Rhg_2tG8zRFDA1g
